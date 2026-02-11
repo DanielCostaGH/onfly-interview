@@ -1,0 +1,352 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Onfly
+meta:
+  id: wrk_7ad48f0bd1df4638b794afcc282a36df
+  created: 1770784437879
+  modified: 1770784437879
+  description: ""
+collection:
+  - name: Onfly
+    meta:
+      id: fld_d3342e3eeda140f6ab84b67a46753e3e
+      created: 1770784437881
+      modified: 1770820742263
+      sortKey: -1770784433059
+      description: ""
+    children:
+      - name: Auth
+        meta:
+          id: fld_302c2611f933456d9ebad2241a6c9802
+          created: 1770784437909
+          modified: 1770820742263
+          sortKey: -1770784433058
+          description: ""
+        children:
+          - url: "{{ _.url }}auth/login"
+            name: login
+            meta:
+              id: req_bf1dc45e19e045c3b81100349a5144e4
+              created: 1770784437910
+              modified: 1770820507829
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433057
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "email": "maria@empresa.com",
+                  "password": "123456"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              afterResponse: |
+                const json = insomnia.response.json();
+                insomnia.environment.set('token', json.token);
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{url}}auth/me"
+            name: me
+            meta:
+              id: req_04ac7839a7b84ffea48f263a244e4a20
+              created: 1770784437911
+              modified: 1770820498971
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433056
+            method: GET
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{url}}auth/logout"
+            name: logout
+            meta:
+              id: req_5b538c406f834da7b2369d4ee2aaf6d0
+              created: 1770784437911
+              modified: 1770820473143
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433055
+            method: POST
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Airports
+        meta:
+          id: fld_64264d05dc344f5da518285d210c6e1c
+          created: 1770784437912
+          modified: 1770784437912
+          sortKey: -1770784433054
+          description: ""
+        children:
+          - url: "{{url}}airports"
+            name: airports
+            meta:
+              id: req_f6a9ca724c7b4d9398973e71f77dfe26
+              created: 1770784437912
+              modified: 1770784437912
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433053
+            method: GET
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Travel Requests
+        meta:
+          id: fld_f471f69d97074277816d6b3dc3e5ac40
+          created: 1770784437913
+          modified: 1770784437913
+          sortKey: -1770784433052
+          description: ""
+        children:
+          - url: "{{_['url']}}travel-requests"
+            name: travel-requests
+            meta:
+              id: req_8efbe5c077474ed5b7521a0435f52f91
+              created: 1770784437913
+              modified: 1770784437913
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433051
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "destination_airport_id": 5,
+                  "departure_date": "2026-03-15",
+                  "return_date": "2026-03-20"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{_['url']}}travel-requests/2"
+            name: travel-requests/:id
+            meta:
+              id: req_0b1acfae7282499c946936fdda08ae90
+              created: 1770784437914
+              modified: 1770820949618
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433048
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"status": "approved"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{_['url']}}travel-requests"
+            name: travel-requests
+            meta:
+              id: req_ae46041ebd2e4790b910bb044427f422
+              created: 1770784437914
+              modified: 1770784437914
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433050
+            method: GET
+            headers:
+              - name: Content-Type
+                value: application/json
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{_['url']}}travel-requests"
+            name: travel-requests (search)
+            meta:
+              id: req_bf9fa7c0c2ea499e8e09a61e3a1e7bb1
+              created: 1770784437914
+              modified: 1770821112167
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433049
+            method: GET
+            parameters:
+              - name: status
+                value: canceled
+                description: ""
+                disabled: true
+              - name: destination_airport_id
+                value: "3"
+                description: ""
+                disabled: true
+              - name: travel_from
+                value: 2026-03-01
+                description: ""
+                disabled: false
+              - name: travel_to
+                value: 2026-03-31
+                description: ""
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Notifications
+        meta:
+          id: fld_c0b4e13422f64dfbb591d5d8005e426d
+          created: 1770784437915
+          modified: 1770784437915
+          sortKey: -1770784433047
+          description: ""
+        children:
+          - url: "{{url}}notifications"
+            name: notifications
+            meta:
+              id: req_66340e81315e43c38dfd543f08f31a48
+              created: 1770784437915
+              modified: 1770784437915
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433046
+            method: GET
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{url}}notifications/:id/read"
+            name: notifications/:id/read
+            meta:
+              id: req_e3e88a21c32f4520848b4b3c4332414e
+              created: 1770784437915
+              modified: 1770784437915
+              isPrivate: false
+              description: ""
+              sortKey: -1770784433045
+            method: POST
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+            pathParameters:
+              - name: id
+                value: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_164db87b2195cfeda52cb05bf69e318b8930803f
+    created: 1770784437918
+    modified: 1770820742260
+environments:
+  name: Base Environment
+  meta:
+    id: env_164db87b2195cfeda52cb05bf69e318b8930803f
+    created: 1770784437916
+    modified: 1770820742262
+    isPrivate: false
+  data:
+    url: http://localhost/api/
+    token: 7|2f6XCWgESRFl6sSFjl7KjOilSgRIgZ8oxGAVgBaN15284e96
+    id: "{% response 'body', 'req_bf1dc45e19e045c3b81100349a5144e4',
+      'b64::JC51c2VyLmlk::46b', 'always', 60 %}"

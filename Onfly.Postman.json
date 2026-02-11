@@ -1,0 +1,1002 @@
+{
+  "info": {
+    "_postman_id": "16cce042-94eb-43a4-8e5b-7215f5fe2f2d",
+    "name": "Onfly",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20789210"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "pm.environment.set('token', json.token);",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"joao@empresa.com\",\n  \"password\": \"123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}auth/login",
+              "host": [
+                "{{url}}auth"
+              ],
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"maria@empresa.com\",\n  \"password\": \"123456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}auth/login",
+                  "host": [
+                    "{{url}}auth"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 03:22:46 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"token\": \"21|twTGin5awpKN2LaUPWHh1ebYTidQ2oc1o2H5hzjke8d107c1\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Maria Santos\",\n        \"email\": \"maria@empresa.com\",\n        \"role\": \"admin\",\n        \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "me",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}auth/me",
+              "host": [
+                "{{url}}auth"
+              ],
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "me",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}auth/me",
+                  "host": [
+                    "{{url}}auth"
+                  ],
+                  "path": [
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 03:22:41 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Maria Santos\",\n        \"email\": \"maria@empresa.com\",\n        \"role\": \"admin\",\n        \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}auth/logout",
+              "host": [
+                "{{url}}auth"
+              ],
+              "path": [
+                "logout"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "logout",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}auth/logout",
+                  "host": [
+                    "{{url}}auth"
+                  ],
+                  "path": [
+                    "logout"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 03:22:51 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Logout realizado com sucesso.\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Airports",
+      "item": [
+        {
+          "name": "airports",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}airports",
+              "host": [
+                "{{url}}airports"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "airports",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}airports",
+                  "host": [
+                    "{{url}}airports"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 03:22:29 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": 5,\n            \"iata_code\": \"CNF\",\n            \"name\": \"Tancredo Neves International Airport\",\n            \"city\": \"Belo Horizonte\",\n            \"state\": \"MG\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 19,\n            \"iata_code\": \"CGR\",\n            \"name\": \"Campo Grande Airport\",\n            \"city\": \"Campo Grande\",\n            \"state\": \"MS\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 8,\n            \"iata_code\": \"CXJ\",\n            \"name\": \"Hugo Cantergiani Regional Airport\",\n            \"city\": \"Caxias do Sul\",\n            \"state\": \"RS\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 20,\n            \"iata_code\": \"CMG\",\n            \"name\": \"Corumbá International Airport\",\n            \"city\": \"Corumbá\",\n            \"state\": \"MS\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 16,\n            \"iata_code\": \"JJD\",\n            \"name\": \"Comandante Ariston Pessoa Airport\",\n            \"city\": \"Cruz\",\n            \"state\": \"CE\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 10,\n            \"iata_code\": \"CWB\",\n            \"name\": \"Curitiba-Afonso Pena International Airport\",\n            \"city\": \"Curitiba\",\n            \"state\": \"PR\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 14,\n            \"iata_code\": \"FEN\",\n            \"name\": \"Fernando de Noronha Airport\",\n            \"city\": \"Fernando de Noronha\",\n            \"state\": \"PE\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 17,\n            \"iata_code\": \"FLN\",\n            \"name\": \"Hercílio Luz International Airport\",\n            \"city\": \"Florianópolis\",\n            \"state\": \"SC\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 15,\n            \"iata_code\": \"FOR\",\n            \"name\": \"Pinto Martins International Airport\",\n            \"city\": \"Fortaleza\",\n            \"state\": \"CE\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 9,\n            \"iata_code\": \"IGU\",\n            \"name\": \"Cataratas International Airport\",\n            \"city\": \"Foz do Iguaçu\",\n            \"state\": \"PR\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 6,\n            \"iata_code\": \"GVR\",\n            \"name\": \"Coronel Altino Machado Airport\",\n            \"city\": \"Governador Valadares\",\n            \"state\": \"MG\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 18,\n            \"iata_code\": \"NVT\",\n            \"name\": \"Ministro Victor Konder International Airport\",\n            \"city\": \"Navegantes\",\n            \"state\": \"SC\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 7,\n            \"iata_code\": \"POA\",\n            \"name\": \"Porto Alegre-Salgado Filho International Airport\",\n            \"city\": \"Porto Alegre\",\n            \"state\": \"RS\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 12,\n            \"iata_code\": \"BPS\",\n            \"name\": \"Porto Seguro International Airport\",\n            \"city\": \"Porto Seguro\",\n            \"state\": \"BA\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 13,\n            \"iata_code\": \"REC\",\n            \"name\": \"Recife/Guararapes - Gilberto Freyre International Airport\",\n            \"city\": \"Recife\",\n            \"state\": \"PE\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 3,\n            \"iata_code\": \"GIG\",\n            \"name\": \"Rio Galeão – Tom Jobim International Airport\",\n            \"city\": \"Rio de Janeiro\",\n            \"state\": \"RJ\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 4,\n            \"iata_code\": \"SDU\",\n            \"name\": \"Santos Dumont Airport\",\n            \"city\": \"Rio de Janeiro\",\n            \"state\": \"RJ\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 11,\n            \"iata_code\": \"SSA\",\n            \"name\": \"Deputado Luiz Eduardo Magalhães International Airport\",\n            \"city\": \"Salvador\",\n            \"state\": \"BA\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 1,\n            \"iata_code\": \"CGH\",\n            \"name\": \"Congonhas–Deputado Freitas Nobre Airport\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\",\n            \"country\": \"Brasil\"\n        },\n        {\n            \"id\": 2,\n            \"iata_code\": \"GRU\",\n            \"name\": \"São Paulo/Guarulhos–Governor André Franco Montoro International Airport\",\n            \"city\": \"São Paulo\",\n            \"state\": \"SP\",\n            \"country\": \"Brasil\"\n        }\n    ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Travel Requests",
+      "item": [
+        {
+          "name": "travel-requests",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination_airport_id\": 3,\n  \"departure_date\": \"2026-03-15\",\n  \"return_date\": \"2026-03-20\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}travel-requests",
+              "host": [
+                "{{url}}travel-requests"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "travel-requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination_airport_id\": 3,\n  \"departure_date\": \"2026-03-15\",\n  \"return_date\": \"2026-03-20\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}travel-requests",
+                  "host": [
+                    "{{url}}travel-requests"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 03:22:17 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": 5,\n        \"code\": \"TRV-2026-000005\",\n        \"status\": \"requested\",\n        \"user_id\": 1,\n        \"destination_airport_id\": 3,\n        \"departure_date\": \"2026-03-15\",\n        \"return_date\": \"2026-03-20\",\n        \"created_at\": \"2026-02-11T03:22:17.000000Z\",\n        \"updated_at\": \"2026-02-11T03:22:17.000000Z\",\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Maria Santos\",\n            \"email\": \"maria@empresa.com\",\n            \"role\": \"admin\",\n            \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n        },\n        \"destination_airport\": {\n            \"id\": 3,\n            \"iata_code\": \"GIG\",\n            \"name\": \"Rio Galeão – Tom Jobim International Airport\",\n            \"city\": \"Rio de Janeiro\",\n            \"state\": \"RJ\",\n            \"country\": \"Brasil\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "travel-requests",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}travel-requests",
+              "host": [
+                "{{url}}travel-requests"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "travel-requests",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}travel-requests",
+                  "host": [
+                    "{{url}}travel-requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 03:21:55 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"code\": \"TRV-2026-000004\",\n            \"status\": \"approved\",\n            \"user_id\": 1,\n            \"destination_airport_id\": 3,\n            \"departure_date\": \"2026-03-15\",\n            \"return_date\": \"2026-03-20\",\n            \"created_at\": \"2026-02-11T03:19:22.000000Z\",\n            \"updated_at\": \"2026-02-11T03:21:39.000000Z\",\n            \"user\": {\n                \"id\": 1,\n                \"name\": \"Maria Santos\",\n                \"email\": \"maria@empresa.com\",\n                \"role\": \"admin\",\n                \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n            },\n            \"destination_airport\": {\n                \"id\": 3,\n                \"iata_code\": \"GIG\",\n                \"name\": \"Rio Galeão – Tom Jobim International Airport\",\n                \"city\": \"Rio de Janeiro\",\n                \"state\": \"RJ\",\n                \"country\": \"Brasil\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"code\": \"TRV-2026-000003\",\n            \"status\": \"requested\",\n            \"user_id\": 2,\n            \"destination_airport_id\": 5,\n            \"departure_date\": \"2026-03-15\",\n            \"return_date\": \"2026-03-20\",\n            \"created_at\": \"2026-02-11T03:16:47.000000Z\",\n            \"updated_at\": \"2026-02-11T03:16:47.000000Z\",\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"João Silva\",\n                \"email\": \"joao@empresa.com\",\n                \"role\": \"user\",\n                \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n            },\n            \"destination_airport\": {\n                \"id\": 5,\n                \"iata_code\": \"CNF\",\n                \"name\": \"Tancredo Neves International Airport\",\n                \"city\": \"Belo Horizonte\",\n                \"state\": \"MG\",\n                \"country\": \"Brasil\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"code\": \"TRV-2026-000002\",\n            \"status\": \"canceled\",\n            \"user_id\": 2,\n            \"destination_airport_id\": 1,\n            \"departure_date\": \"2026-03-15\",\n            \"return_date\": \"2026-03-20\",\n            \"created_at\": \"2026-02-11T03:00:27.000000Z\",\n            \"updated_at\": \"2026-02-11T03:00:47.000000Z\",\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"João Silva\",\n                \"email\": \"joao@empresa.com\",\n                \"role\": \"user\",\n                \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n            },\n            \"destination_airport\": {\n                \"id\": 1,\n                \"iata_code\": \"CGH\",\n                \"name\": \"Congonhas–Deputado Freitas Nobre Airport\",\n                \"city\": \"São Paulo\",\n                \"state\": \"SP\",\n                \"country\": \"Brasil\"\n            }\n        },\n        {\n            \"id\": 1,\n            \"code\": \"TRV-2026-000001\",\n            \"status\": \"approved\",\n            \"user_id\": 2,\n            \"destination_airport_id\": 1,\n            \"departure_date\": \"2026-03-15\",\n            \"return_date\": \"2026-03-20\",\n            \"created_at\": \"2026-02-11T01:49:19.000000Z\",\n            \"updated_at\": \"2026-02-11T02:49:53.000000Z\",\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"João Silva\",\n                \"email\": \"joao@empresa.com\",\n                \"role\": \"user\",\n                \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n            },\n            \"destination_airport\": {\n                \"id\": 1,\n                \"iata_code\": \"CGH\",\n                \"name\": \"Congonhas–Deputado Freitas Nobre Airport\",\n                \"city\": \"São Paulo\",\n                \"state\": \"SP\",\n                \"country\": \"Brasil\"\n            }\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "travel-requests (search)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}travel-requests",
+              "host": [
+                "{{url}}travel-requests"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "approved",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "destination_airport_id",
+                  "value": "3",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "travel_from",
+                  "value": "2026-03-01",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "travel_to",
+                  "value": "2026-03-31",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "travel-requests (search)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}travel-requests?status=approved",
+                  "host": [
+                    "{{url}}travel-requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "approved",
+                      "type": "text"
+                    },
+                    {
+                      "key": "destination_airport_id",
+                      "value": "3",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2026-02-01",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2026-02-28",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "travel_from",
+                      "value": "2026-03-01",
+                      "type": "text",
+                      "disabled": true
+                    },
+                    {
+                      "key": "travel_to",
+                      "value": "2026-03-31",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 04:27:52 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"code\": \"TRV-2026-000001\",\n            \"status\": \"approved\",\n            \"user_id\": 2,\n            \"destination_airport_id\": 3,\n            \"departure_date\": \"2026-03-15\",\n            \"return_date\": \"2026-03-20\",\n            \"created_at\": \"2026-02-11T04:07:45.000000Z\",\n            \"updated_at\": \"2026-02-11T04:09:45.000000Z\",\n            \"user\": {\n                \"id\": 2,\n                \"name\": \"João Silva\",\n                \"email\": \"joao@empresa.com\",\n                \"role\": \"user\",\n                \"created_at\": \"2026-02-11T04:05:56.000000Z\"\n            },\n            \"destination_airport\": {\n                \"id\": 3,\n                \"iata_code\": \"GIG\",\n                \"name\": \"Rio Galeão – Tom Jobim International Airport\",\n                \"city\": \"Rio de Janeiro\",\n                \"state\": \"RJ\",\n                \"country\": \"Brasil\"\n            }\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "travel-requests/:id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n//   \"status\": \"canceled\"\n\"status\": \"approved\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}travel-requests/:id",
+              "host": [
+                "{{url}}travel-requests"
+              ],
+              "path": [
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "travel-requests/:id",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n//   \"status\": \"canceled\"\n\"status\": \"approved\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}travel-requests/:id",
+                  "host": [
+                    "{{url}}travel-requests"
+                  ],
+                  "path": [
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 03:21:39 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": {\n        \"id\": 4,\n        \"code\": \"TRV-2026-000004\",\n        \"status\": \"approved\",\n        \"user_id\": 1,\n        \"destination_airport_id\": 3,\n        \"departure_date\": \"2026-03-15\",\n        \"return_date\": \"2026-03-20\",\n        \"created_at\": \"2026-02-11T03:19:22.000000Z\",\n        \"updated_at\": \"2026-02-11T03:21:39.000000Z\",\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Maria Santos\",\n            \"email\": \"maria@empresa.com\",\n            \"role\": \"admin\",\n            \"created_at\": \"2026-02-10T23:52:42.000000Z\"\n        },\n        \"destination_airport\": {\n            \"id\": 3,\n            \"iata_code\": \"GIG\",\n            \"name\": \"Rio Galeão – Tom Jobim International Airport\",\n            \"city\": \"Rio de Janeiro\",\n            \"state\": \"RJ\",\n            \"country\": \"Brasil\"\n        }\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "notifications",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}notifications",
+              "host": [
+                "{{url}}notifications"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "notifications",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}notifications",
+                  "host": [
+                    "{{url}}notifications"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 04:10:00 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"data\": [\n        {\n            \"id\": \"5d6837e6-2067-47fb-9a7d-2203465a746e\",\n            \"type\": \"App\\\\Notifications\\\\TravelRequestStatusNotification\",\n            \"data\": {\n                \"travel_request_id\": 1,\n                \"code\": \"TRV-2026-000001\",\n                \"from_status\": \"requested\",\n                \"to_status\": \"approved\",\n                \"destination\": {\n                    \"city\": \"Rio de Janeiro\",\n                    \"state\": \"RJ\",\n                    \"iata_code\": \"GIG\"\n                },\n                \"departure_date\": \"2026-03-15\",\n                \"return_date\": \"2026-03-20\"\n            },\n            \"read_at\": null,\n            \"created_at\": \"2026-02-11T04:09:45.000000Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "notifications/:id/read",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url}}notifications/:id/read",
+              "host": [
+                "{{url}}notifications"
+              ],
+              "path": [
+                ":id",
+                "read"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "5d6837e6-2067-47fb-9a7d-2203465a746e"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "notifications/:id/read",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}notifications/:id/read",
+                  "host": [
+                    "{{url}}notifications"
+                  ],
+                  "path": [
+                    ":id",
+                    "read"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "5d6837e6-2067-47fb-9a7d-2203465a746e"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Host",
+                  "value": "localhost"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.5.2"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 11 Feb 2026 04:11:59 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Notificação marcada como lida.\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
