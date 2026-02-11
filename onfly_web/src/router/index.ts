@@ -37,6 +37,7 @@ export default defineRouter(function (/* { store, ssrContext } */) {
   Router.beforeEach(async (to) => {
     const authStore = useAuthStore();
     const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+    const requiresAdmin = to.matched.some((record) => record.meta.adminOnly);
 
     if (authStore.isAuthenticated && !authStore.user) {
       try {
@@ -48,6 +49,10 @@ export default defineRouter(function (/* { store, ssrContext } */) {
 
     if (requiresAuth && !authStore.isAuthenticated) {
       return { path: '/login' };
+    }
+
+    if (requiresAdmin && !authStore.isAdmin) {
+      return { path: '/dashboard' };
     }
 
     if (to.path === '/login' && authStore.isAuthenticated) {

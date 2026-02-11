@@ -42,6 +42,11 @@ body {
   height: 32px;
 }
 
+.onfly-logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
 .onfly-page-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -58,7 +63,7 @@ body {
 }
 
 .onfly-status-chip {
-  padding: 6px 14px;
+  padding: 6px 6px;
   height: 20px;
   font-size: 0.82rem;
 }
@@ -135,6 +140,10 @@ body {
 .onfly-notification-item {
   border-radius: 10px;
   margin: 4px 8px;
+}
+
+.onfly-log-fab {
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
 }
 
 @media (max-width: 600px) {

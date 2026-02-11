@@ -55,6 +55,16 @@ export interface NotificationItem {
   created_at: string;
 }
 
+export interface TravelRequestLog {
+  id: number;
+  travel_request_id: number;
+  travel_request_code: string | null;
+  changed_by: Pick<User, 'id' | 'name' | 'email'> | null;
+  from_status: TravelStatus | null;
+  to_status: TravelStatus | null;
+  created_at: string;
+}
+
 export interface LoginResponse {
   token: string;
   user: User;

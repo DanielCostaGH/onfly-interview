@@ -69,6 +69,7 @@ import { computed, onMounted, ref } from 'vue';
 import { Notify } from 'quasar';
 import { useAirportsStore } from 'src/stores/airports';
 import { useTravelRequestsStore } from 'src/stores/travelRequests';
+import { formatDate } from 'src/utils/date';
 
 defineProps<{ modelValue: boolean }>();
 const emit = defineEmits<{ 'update:modelValue': [value: boolean]; created: [] }>();
@@ -95,7 +96,7 @@ const dateRange = ref<{ from: string; to: string } | null>(null);
 
 const rangeLabel = computed(() => {
   if (!dateRange.value) return '';
-  return `${dateRange.value.from} → ${dateRange.value.to}`;
+  return `${formatDate(dateRange.value.from)} → ${formatDate(dateRange.value.to)}`;
 });
 
 const today = computed(() => {

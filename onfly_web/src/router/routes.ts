@@ -13,6 +13,12 @@ const routes: RouteRecordRaw[] = [
     children: [
       { path: '', redirect: '/dashboard' },
       { path: 'dashboard', name: 'dashboard', component: () => import('pages/DashboardPage.vue') },
+      {
+        path: 'logs',
+        name: 'logs',
+        component: () => import('pages/LogsPage.vue'),
+        meta: { adminOnly: true },
+      },
     ],
     meta: { requiresAuth: true },
   },

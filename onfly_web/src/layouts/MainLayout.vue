@@ -4,7 +4,9 @@
       <div class="onfly-toolbar-wrap">
         <q-toolbar class="onfly-toolbar">
           <q-toolbar-title class="row items-center q-gutter-sm">
-            <img src="/logo-onfly-branco.svg" alt="Onfly" class="onfly-logo" />
+            <router-link to="/dashboard" class="onfly-logo-link">
+              <img src="/logo-onfly-branco.svg" alt="Onfly" class="onfly-logo" />
+            </router-link>
           </q-toolbar-title>
 
           <div class="row items-center q-gutter-sm">
@@ -93,6 +95,22 @@
         <router-view />
       </div>
     </q-page-container>
+
+    <q-page-sticky
+      v-if="authStore.isAdmin"
+      position="bottom-right"
+      :offset="[18, 18]"
+    >
+      <q-btn
+        round
+        color="primary"
+        icon="history"
+        class="onfly-log-fab"
+        @click="openLogs"
+      >
+        <q-tooltip>Logs</q-tooltip>
+      </q-btn>
+    </q-page-sticky>
   </q-layout>
 </template>
 
@@ -102,6 +120,7 @@ import { useRouter } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
 import { useNotificationsStore } from 'src/stores/notifications';
 import type { NotificationItem, TravelStatus } from 'src/types/api';
+import { formatDate } from 'src/utils/date';
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -150,7 +169,7 @@ function destinationLabel(notification: NotificationItem) {
   const destination = notification.data.destination;
   if (!destination) return '';
   const dates = notification.data.departure_date && notification.data.return_date
-    ? ` • ${notification.data.departure_date} → ${notification.data.return_date}`
+    ? ` • ${formatDate(notification.data.departure_date)} → ${formatDate(notification.data.return_date)}`
     : '';
   return `${destination.city}/${destination.state} (${destination.iata_code})${dates}`;
 }
@@ -159,6 +178,10 @@ async function handleNotificationClick(notification: NotificationItem) {
   if (!notification.read_at) {
     await notificationsStore.markAsRead(notification.id);
   }
+}
+
+function openLogs() {
+  void router.push('/logs');
 }
 
 async function handleLogout() {

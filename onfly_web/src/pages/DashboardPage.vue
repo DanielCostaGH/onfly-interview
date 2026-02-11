@@ -91,6 +91,7 @@
                 rounded
                 readonly
                 clearable
+                :display-value="formatDate(filters.travel_from)"
                 class="onfly-field"
               >
                 <template #append>
@@ -111,6 +112,7 @@
                 rounded
                 readonly
                 clearable
+                :display-value="formatDate(filters.travel_to)"
                 class="onfly-field"
               >
                 <template #append>
@@ -171,8 +173,8 @@
 
         <template #body-cell-dates="props">
           <q-td :props="props">
-            <div>{{ props.row.departure_date }}</div>
-            <div class="text-caption text-grey-7">até {{ props.row.return_date }}</div>
+            <div>{{ formatDate(props.row.departure_date) }}</div>
+            <div class="text-caption text-grey-7">até {{ formatDate(props.row.return_date) }}</div>
           </q-td>
         </template>
 
@@ -232,6 +234,7 @@ import { useAirportsStore } from 'src/stores/airports';
 import { useAuthStore } from 'src/stores/auth';
 import { useTravelRequestsStore } from 'src/stores/travelRequests';
 import type { TravelStatus } from 'src/types/api';
+import { formatDate } from 'src/utils/date';
 
 const authStore = useAuthStore();
 const travelStore = useTravelRequestsStore();
