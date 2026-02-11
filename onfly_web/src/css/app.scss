@@ -1,1 +1,138 @@
 // app global css in SCSS form
+
+@font-face {
+  font-family: 'DM Sans';
+  src:
+    url('/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src:
+    url('/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+body {
+  font-family: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.onfly-header {
+  background: linear-gradient(90deg, #2972fa, #009efb);
+  box-shadow: none;
+}
+
+.onfly-toolbar-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.onfly-toolbar {
+  min-height: 72px;
+  padding: 0;
+}
+
+.onfly-logo {
+  height: 32px;
+}
+
+.onfly-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px;
+}
+
+.onfly-field .q-field__control {
+  border-radius: 12px;
+}
+
+.onfly-chip-wrap {
+  display: inline-flex;
+}
+
+.onfly-status-chip {
+  padding: 6px 14px;
+  height: 20px;
+  font-size: 0.82rem;
+}
+
+.onfly-status-badge {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+}
+
+.onfly-glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.onfly-login-page {
+  min-height: 100vh;
+  background: linear-gradient(90deg, #2972fa, #009efb);
+  padding: 24px;
+}
+
+.onfly-login-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(99px);
+  -webkit-backdrop-filter: blur(99px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2);
+}
+
+.onfly-login-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.onfly-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #2972fa, #009efb);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+}
+
+.onfly-logo-badge img {
+  height: 20px;
+}
+
+.onfly-table :deep(.q-table__top),
+.onfly-table :deep(thead tr) {
+  background: rgba(255, 255, 255, 0.66);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.onfly-side-panel {
+  width: min(420px, 92vw);
+  height: 100vh;
+  border-radius: 16px 0 0 16px;
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: -12px 0 30px rgba(15, 23, 42, 0.12);
+}
+
+@media (max-width: 600px) {
+  .onfly-side-panel {
+    width: 100vw;
+    border-radius: 0;
+  }
+}

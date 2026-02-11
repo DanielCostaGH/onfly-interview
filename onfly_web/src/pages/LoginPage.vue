@@ -1,12 +1,20 @@
 <template>
-  <q-page class="row items-center justify-center">
-    <q-card class="q-pa-lg" style="width: 100%; max-width: 420px">
-      <q-card-section>
-        <div class="text-h6 text-weight-medium">Onfly Travel</div>
-        <div class="text-caption text-grey-7">Entre para continuar</div>
-      </q-card-section>
+  <q-page class="onfly-login-page row items-center justify-center">
+    <q-card class="q-pa-lg onfly-login-card" style="width: 100%; max-width: 420px">
+      <div class="onfly-login-brand q-mb-md">
+        <div class="onfly-logo-badge">
+          <img src="/logo-onfly-branco.svg" alt="Onfly" />
+        </div>
+        <div>
+          <div class="text-h6 text-weight-medium">Onfly Travel</div>
+          <div class="text-caption text-grey-8">Entre para continuar</div>
+        </div>
+      </div>
+      <div class="text-caption text-grey-7 q-mb-xl">
+        Viagens corporativas mais simples, do pedido à aprovação.
+      </div>
 
-      <q-card-section>
+      <q-card-section class="q-pt-none">
         <q-form @submit="handleLogin" class="q-gutter-md">
           <q-input
             v-model="email"
