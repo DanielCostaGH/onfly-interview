@@ -1,12 +1,19 @@
 <template>
   <q-page class="q-pa-md">
-    <div class="row items-center q-mb-md">
-      <div class="col">
+    <div class="row items-center q-mb-md onfly-dashboard-header">
+      <div class="col-12 col-sm">
         <div class="text-h5">Pedidos de viagem</div>
         <div class="text-label text-bold text-grey-7">Gestão de solicitações corporativas</div>
       </div>
-      <div class="col-auto">
-        <q-btn color="primary" label="Nova Solicitação" icon="add" unelevated @click="showCreate = true" />
+      <div class="col-12 col-sm-auto">
+        <q-btn
+          color="primary"
+          label="Nova Solicitação"
+          icon="add"
+          unelevated
+          class="onfly-new-request"
+          @click="showCreate = true"
+        />
       </div>
     </div>
 

@@ -119,6 +119,10 @@ body {
   -webkit-backdrop-filter: blur(10px);
 }
 
+.onfly-table :deep(.q-table__middle) {
+  overflow-x: auto;
+}
+
 .onfly-notifications-menu {
   min-width: 320px;
 }
@@ -131,6 +135,22 @@ body {
 .onfly-notification-item {
   border-radius: 10px;
   margin: 4px 8px;
+}
+
+@media (max-width: 600px) {
+  .onfly-dashboard-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .onfly-new-request {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .onfly-page-container {
+    padding: 16px;
+  }
 }
 
 .onfly-side-panel {
