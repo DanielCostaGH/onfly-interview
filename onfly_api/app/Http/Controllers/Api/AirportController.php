@@ -9,6 +9,9 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AirportController extends Controller
 {
+    /**
+     * List airports.
+     */
     public function index(AirportService $airportService): AnonymousResourceCollection
     {
         return AirportResource::collection($airportService->list());

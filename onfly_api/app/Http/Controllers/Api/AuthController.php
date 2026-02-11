@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    /**
+     * Authenticate user and issue token.
+     */
     public function login(LoginRequest $request, AuthService $authService): JsonResponse
     {
         $data = $authService->login(
@@ -24,11 +27,17 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Return the authenticated user.
+     */
     public function me(Request $request): UserResource
     {
         return new UserResource($request->user());
     }
 
+    /**
+     * Revoke current access token.
+     */
     public function logout(Request $request): JsonResponse
     {
         $request->user()->currentAccessToken()?->delete();

@@ -20,6 +20,8 @@ class TravelRequestService
     ) {}
 
     /**
+     * List travel requests with filters and scope based on user role.
+     *
      * @return Collection<int, TravelRequest>
      */
     public function list(User $user, array $filters): Collection
@@ -27,6 +29,9 @@ class TravelRequestService
         return $this->travelRequestRepository->listWithFilters($user, $filters);
     }
 
+    /**
+     * Create a new travel request for the authenticated user.
+     */
     public function create(User $user, array $data): TravelRequest
     {
         return DB::transaction(function () use ($user, $data) {
@@ -48,11 +53,19 @@ class TravelRequestService
         });
     }
 
+    /**
+     * Retrieve a travel request with relations.
+     */
     public function findOrFail(int $id): TravelRequest
     {
         return $this->travelRequestRepository->findOrFail($id);
     }
 
+    /**
+     * Update the request status and notify the owner.
+     *
+     * @throws ValidationException
+     */
     public function update(User $user, TravelRequest $travelRequest, string $newStatus): TravelRequest
     {
         $currentStatus = $travelRequest->status;

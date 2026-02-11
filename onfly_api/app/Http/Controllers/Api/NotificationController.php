@@ -10,6 +10,9 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class NotificationController extends Controller
 {
+    /**
+     * List notifications (optionally only unread).
+     */
     public function index(Request $request): AnonymousResourceCollection
     {
         $onlyUnread = $request->boolean('unread');
@@ -23,6 +26,9 @@ class NotificationController extends Controller
         );
     }
 
+    /**
+     * Mark a notification as read.
+     */
     public function markAsRead(Request $request, string $notificationId): JsonResponse
     {
         $notification = $request->user()

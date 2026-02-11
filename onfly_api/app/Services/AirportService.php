@@ -13,6 +13,8 @@ class AirportService
     ) {}
 
     /**
+     * List all airports ordered for selection.
+     *
      * @return Collection<int, Airport>
      */
     public function list(): Collection

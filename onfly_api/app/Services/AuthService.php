@@ -9,7 +9,11 @@ use Illuminate\Validation\ValidationException;
 class AuthService
 {
     /**
+     * Authenticate user and return an API token.
+     *
      * @return array{user: User, token: string}
+     *
+     * @throws ValidationException
      */
     public function login(string $email, string $password): array
     {
