@@ -21,7 +21,7 @@ test('creates a travel request with code and requested status', function () {
 
     $user = User::factory()->create();
 
-    $service = new TravelRequestService(new TravelRequestRepository());
+    $service = new TravelRequestService(new TravelRequestRepository);
 
     $travelRequest = $service->create($user, [
         'destination_airport_id' => $airport->id,
@@ -56,7 +56,7 @@ test('updates status, logs and creates notification', function () {
         'status' => TravelStatus::Requested->value,
     ]);
 
-    $service = new TravelRequestService(new TravelRequestRepository());
+    $service = new TravelRequestService(new TravelRequestRepository);
 
     $updated = $service->update($admin, $travelRequest, TravelStatus::Approved->value);
 
@@ -94,7 +94,7 @@ test('prevents status update when request is not requested', function () {
         'status' => TravelStatus::Canceled->value,
     ]);
 
-    $service = new TravelRequestService(new TravelRequestRepository());
+    $service = new TravelRequestService(new TravelRequestRepository);
 
     expect(fn () => $service->update($admin, $travelRequest, TravelStatus::Approved->value))
         ->toThrow(ValidationException::class);

@@ -47,7 +47,7 @@ test('repository filters by status and respects user scope', function () {
         'status' => TravelStatus::Approved->value,
     ]);
 
-    $repo = new TravelRequestRepository();
+    $repo = new TravelRequestRepository;
 
     $userResults = $repo->listWithFilters($userA, ['status' => TravelStatus::Approved->value]);
     expect($userResults)->toHaveCount(1);

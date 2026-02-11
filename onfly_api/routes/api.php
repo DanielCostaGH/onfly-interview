@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ->parameters(['travel-requests' => 'travelRequest']);
 
     Route::get('travel-request-logs', [TravelRequestLogController::class, 'index']);
-        
+
     Route::get('notifications', [NotificationController::class, 'index']);
     Route::post('notifications/{notificationId}/read', [NotificationController::class, 'markAsRead']);
 });
