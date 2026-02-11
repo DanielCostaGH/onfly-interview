@@ -9,7 +9,7 @@ Aplicação full stack para **gestão de pedidos de viagem corporativa**.
 - **Node**: 20+
 - **Vue**: 3.5
 - **Quasar**: 2.x (`@quasar/app-vite` 2.x)
-
+- **Composer**: 2.8+
 ---
 
 # Guia de Instalação (Docker + Local)
@@ -24,29 +24,29 @@ cd onfly-interview
 
 # Back-end (Laravel + Sail)
 
-## 2) Entrar na pasta e instalar dependências
+### 2) Entrar na pasta e instalar dependências
 ```bash
 cd onfly_api
 composer install
 ```
 
-## 3) Preparar `.env`
+### 3) Preparar `.env`
 ```bash
 cp .env.example .env
 ```
 
-## 4) Subir containers
+### 4) Subir containers
 ```bash
 docker compose up -d --build
 ```
 
-## 5) Gerar chave e preparar banco
+### 5) Gerar chave e preparar banco
 ```bash
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail artisan migrate --seed
 ```
 
-## 6) Rodar testes do back-end
+### 6) Rodar testes do back-end
 ```bash
 ./vendor/bin/sail artisan test
 ```
@@ -71,7 +71,7 @@ Subiu junto com o Docker.
 
 # Front-end (Quasar)
 
-## 7) Entrar na pasta do front
+### 7) Entrar na pasta do front
 ```bash
 cd ../onfly_web
 cp .env.example .env
@@ -82,6 +82,8 @@ cp .env.example .env
 yarn install
 yarn quasar dev
 ```
+**Front disponível em:**  
+`http://localhost:9000`
 
 ## Opção B — Rodar via Docker
 ```bash
@@ -89,7 +91,6 @@ docker run --rm -it -p 9000:9000 \
   -v "$(pwd):/app" -w /app node:20-bullseye \
   bash -lc "yarn install && yarn quasar dev --host 0.0.0.0 --port 9000"
 ```
-
 **Front disponível em:**  
 `http://localhost:9000`
 
