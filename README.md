@@ -3,7 +3,7 @@
 Aplicação full stack para **gestão de pedidos de viagem corporativa**.
 
 ## Tecnologias (versões)
-- **PHP**: 8.4
+- **PHP**: 8.5 (container)
 - **Laravel**: ^12
 - **MySQL**: 8.4
 - **Node**: 20+
@@ -24,20 +24,20 @@ cd onfly-interview
 
 # Back-end (Laravel + Sail)
 
-## 2) Entrar na pasta e instalar dependências
+## 2) Entrar na pasta e preparar `.env`
 ```bash
 cd onfly_api
-composer install
-```
-
-## 3) Preparar `.env`
-```bash
 cp .env.example .env
 ```
 
-## 4) Subir containers
+## 3) Subir containers
 ```bash
-./vendor/bin/sail up -d --build
+docker compose up -d --build
+```
+
+## 4) Instalar dependências e sail (dentro do container)
+```bash
+docker compose exec laravel.test composer install
 ```
 
 ## 5) Gerar chave e preparar banco
@@ -64,7 +64,7 @@ Subiu junto com o Docker.
 - `http://localhost:8081`
 
 **Credenciais:**
-- Usuário: `sail`
+- Usuário: `root`
 - Senha: `password`
 
 ---
