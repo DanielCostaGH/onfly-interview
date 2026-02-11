@@ -64,7 +64,7 @@ Subiu junto com o Docker.
 - `http://localhost:8081`
 
 **Credenciais:**
-- Usuário: `root`
+- Usuário: `sail`
 - Senha: `password`
 
 ---
