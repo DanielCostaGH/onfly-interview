@@ -33,6 +33,28 @@ export interface TravelRequest {
   destination_airport?: Airport;
 }
 
+export interface NotificationData {
+  travel_request_id?: number;
+  code?: string;
+  from_status?: TravelStatus;
+  to_status?: TravelStatus;
+  destination?: {
+    city: string;
+    state: string;
+    iata_code: string;
+  };
+  departure_date?: string;
+  return_date?: string;
+}
+
+export interface NotificationItem {
+  id: string;
+  type: string;
+  data: NotificationData;
+  read_at: string | null;
+  created_at: string;
+}
+
 export interface LoginResponse {
   token: string;
   user: User;

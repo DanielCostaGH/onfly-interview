@@ -119,6 +119,20 @@ body {
   -webkit-backdrop-filter: blur(10px);
 }
 
+.onfly-notifications-menu {
+  min-width: 320px;
+}
+
+.onfly-notifications-list {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.onfly-notification-item {
+  border-radius: 10px;
+  margin: 4px 8px;
+}
+
 .onfly-side-panel {
   width: min(420px, 92vw);
   height: 100vh;
