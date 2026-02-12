@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        RateLimiter::for('login', function (Request $request) {
+            $email = strtolower(trim((string) $request->input('email', '')));
+            $ip = (string) $request->ip();
+
+            return Limit::perMinute(5, 5)
+                ->by($email.'|'.$ip)
+                ->response(function (Request $request, array $headers) {
+                    $retryAfter = (int) ($headers['Retry-After'] ?? 300);
+
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Muitas tentativas de login. Tente novamente mais tarde.',
+                        'retry_after' => $retryAfter,
+                    ], 429, $headers);
+                });
+        });
     }
 }

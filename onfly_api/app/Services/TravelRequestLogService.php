@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\TravelRequestLog;
 use App\Repositories\TravelRequestLogRepository;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class TravelRequestLogService
 {
@@ -16,9 +16,9 @@ class TravelRequestLogService
      * List logs with filters.
      *
      * @param  array<string, mixed>  $filters
-     * @return Collection<int, TravelRequestLog>
+     * @return LengthAwarePaginator<int, TravelRequestLog>
      */
-    public function list(array $filters): Collection
+    public function list(array $filters): LengthAwarePaginator
     {
         return $this->travelRequestLogRepository->listWithFilters($filters);
     }

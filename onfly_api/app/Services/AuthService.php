@@ -25,7 +25,9 @@ class AuthService
             ]);
         }
 
-        $token = $user->createToken('api-token')->plainTextToken;
+        $expiration = (int) config('sanctum.expiration', 120);
+        $expiresAt = now()->addMinutes($expiration);
+        $token = $user->createToken('api-token', ['*'], $expiresAt)->plainTextToken;
 
         return [
             'user' => $user,
