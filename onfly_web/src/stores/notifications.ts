@@ -16,7 +16,10 @@ export const useNotificationsStore = defineStore('notifications', {
       this.loading = true;
       try {
         const { data } = await api.get<{ data: NotificationItem[] }>('/api/notifications', {
-          params,
+          params: {
+            ...params,
+            per_page: 100,
+          },
         });
         this.items = data.data;
         this.lastFetchedAt = new Date().toISOString();

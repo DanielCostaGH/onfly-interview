@@ -27,6 +27,8 @@ class IndexTravelRequestLogRequest extends FormRequest
             'code' => ['nullable', 'string'],
             'created_from' => ['nullable', 'date'],
             'created_to' => ['nullable', 'date'],
+            'page' => ['nullable', 'integer', 'min:1'],
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
         ];
     }
 }

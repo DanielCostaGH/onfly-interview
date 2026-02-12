@@ -49,9 +49,10 @@
           </q-input>
 
           <div class="row justify-end q-gutter-sm">
-            <q-btn flat color="grey" label="Cancelar" v-close-popup />
+            <q-btn flat color="grey" rounded label="Cancelar" v-close-popup />
             <q-btn
               color="primary"
+              rounded
               label="Criar"
               type="submit"
               :loading="submitting"

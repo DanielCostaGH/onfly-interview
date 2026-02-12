@@ -21,7 +21,10 @@ export const useTravelRequestsStore = defineStore('travelRequests', {
       this.loading = true;
       try {
         const params = Object.fromEntries(
-          Object.entries(filters).filter(([, value]) => value !== null && value !== undefined && value !== '')
+          Object.entries({
+            ...filters,
+            per_page: 100,
+          }).filter(([, value]) => value !== null && value !== undefined && value !== '')
         );
         const { data } = await api.get<{ data: TravelRequest[] }>('/api/travel-requests', { params });
         this.items = data.data;

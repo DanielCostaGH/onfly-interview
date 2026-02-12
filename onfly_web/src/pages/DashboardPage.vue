@@ -11,6 +11,7 @@
           label="Nova Solicitação"
           icon="add"
           unelevated
+          rounded
           class="onfly-new-request"
           @click="showCreate = true"
         />

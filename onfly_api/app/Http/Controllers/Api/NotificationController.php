@@ -15,14 +15,21 @@ class NotificationController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
+        $validated = $request->validate([
+            'unread' => ['nullable', 'boolean'],
+            'page' => ['nullable', 'integer', 'min:1'],
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
+        ]);
+
         $onlyUnread = $request->boolean('unread');
+        $perPage = (int) ($validated['per_page'] ?? 15);
 
         $notifications = $onlyUnread
             ? $request->user()->unreadNotifications()
             : $request->user()->notifications();
 
         return NotificationResource::collection(
-            $notifications->orderByDesc('created_at')->get()
+            $notifications->orderByDesc('created_at')->paginate($perPage)->withQueryString()
         );
     }
 

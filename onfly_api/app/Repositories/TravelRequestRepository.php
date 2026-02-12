@@ -6,7 +6,7 @@ use App\Enums\UserRole;
 use App\Models\TravelRequest;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class TravelRequestRepository
 {
@@ -31,9 +31,9 @@ class TravelRequestRepository
     }
 
     /**
-     * @return Collection<int, TravelRequest>
+     * @return LengthAwarePaginator<int, TravelRequest>
      */
-    public function listWithFilters(User $user, array $filters): Collection
+    public function listWithFilters(User $user, array $filters): LengthAwarePaginator
     {
         $query = TravelRequest::query()
             ->with(['user', 'destinationAirport']);
@@ -44,7 +44,9 @@ class TravelRequestRepository
 
         $this->applyFilters($query, $filters);
 
-        return $query->orderByDesc('created_at')->get();
+        $perPage = (int) ($filters['per_page'] ?? 15);
+
+        return $query->orderByDesc('created_at')->paginate($perPage)->withQueryString();
     }
 
     private function applyFilters(Builder $query, array $filters): void

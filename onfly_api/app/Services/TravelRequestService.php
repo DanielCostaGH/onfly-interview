@@ -8,7 +8,7 @@ use App\Models\TravelRequestLog;
 use App\Models\User;
 use App\Notifications\TravelRequestStatusNotification;
 use App\Repositories\TravelRequestRepository;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -22,9 +22,9 @@ class TravelRequestService
     /**
      * List travel requests with filters and scope based on user role.
      *
-     * @return Collection<int, TravelRequest>
+     * @return LengthAwarePaginator<int, TravelRequest>
      */
-    public function list(User $user, array $filters): Collection
+    public function list(User $user, array $filters): LengthAwarePaginator
     {
         return $this->travelRequestRepository->listWithFilters($user, $filters);
     }

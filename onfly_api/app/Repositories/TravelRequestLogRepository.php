@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\TravelRequestLog;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class TravelRequestLogRepository
 {
@@ -11,9 +11,9 @@ class TravelRequestLogRepository
      * List logs with optional filters.
      *
      * @param  array<string, mixed>  $filters
-     * @return Collection<int, TravelRequestLog>
+     * @return LengthAwarePaginator<int, TravelRequestLog>
      */
-    public function listWithFilters(array $filters): Collection
+    public function listWithFilters(array $filters): LengthAwarePaginator
     {
         $query = TravelRequestLog::query()
             ->with(['travelRequest', 'changedBy']);
@@ -45,6 +45,8 @@ class TravelRequestLogRepository
             });
         }
 
-        return $query->orderByDesc('created_at')->get();
+        $perPage = (int) ($filters['per_page'] ?? 15);
+
+        return $query->orderByDesc('created_at')->paginate($perPage)->withQueryString();
     }
 }

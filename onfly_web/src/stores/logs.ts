@@ -20,7 +20,10 @@ export const useLogsStore = defineStore('logs', {
       this.loading = true;
       try {
         const params = Object.fromEntries(
-          Object.entries(filters).filter(([, value]) => value !== null && value !== undefined && value !== '')
+          Object.entries({
+            ...filters,
+            per_page: 100,
+          }).filter(([, value]) => value !== null && value !== undefined && value !== '')
         );
         const { data } = await api.get<{ data: TravelRequestLog[] }>('/api/travel-request-logs', { params });
         this.items = data.data;
