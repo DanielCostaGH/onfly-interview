@@ -10,6 +10,16 @@ Aplicação full stack para **gestão de pedidos de viagem corporativa**.
 - **Vue**: 3.5
 - **Quasar**: 2.x (`@quasar/app-vite` 2.x)
 - **Composer**: 2.8+
+
+## Segurança (OWASP Top 10)
+Esta solução foi construída com práticas alinhadas ao **OWASP Top 10**, com foco em:
+- autenticação por token com expiração (Sanctum)
+- controle de acesso por perfil e policies
+- validação de entrada com Form Requests
+- tratamento padronizado de erros para API
+- CORS configurado por ambiente
+- rate limit em autenticação (`login`)
+- paginação server-side para evitar abuso de listagens
 ---
 
 # Guia de Instalação (Docker + Local)
@@ -108,3 +118,15 @@ docker run --rm -it -p 9000:9000 \
 Arquivos na raiz do repositório:
 - `Onfly.Postman.json`
 - `Onfly_Insomnia.yaml`
+
+---
+
+# Galeria da Aplicação
+
+| Dashboard | Nova Solicitação |
+| --- | --- |
+| ![Dashboard](docs/screenshots/dashboard.jpg) | ![Nova solicitação](docs/screenshots/new_request.jpg) |
+
+| Rate Limit no Login | Logs de Solicitações |
+| --- | --- |
+| ![Rate limit no login](docs/screenshots/rate-limit.jpg) | ![Logs de solicitações](docs/screenshots/logs.jpg) |
